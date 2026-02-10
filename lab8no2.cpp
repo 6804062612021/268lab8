@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 int checkscore(char std[]);
+int no1stat(char first[][10]);
 
 int main() {
     int i;
@@ -14,9 +15,8 @@ int main() {
 	{'B','B','A','C','C','D','E','E','A','D'},//7
 	{'E','B','E','C','C','D','E','E','A','D'}};//7
 
-	for(i=0;i<8;i++){
-		printf("std %d => %d\n", (i+1), checkscore(ans[i]));
-	}
+	for(i=0;i<8;i++) printf("std %d => %d\n", (i+1), checkscore(ans[i]));
+	printf("There are %d students who answered question 1 correctly",no1stat(ans));
 }
 
 
@@ -27,4 +27,12 @@ int checkscore(char std[]){
 		if(std[j]==charkeys[j]) score = score+1;
 	}
 	return score;
+}
+
+int no1stat(char first[][10]){
+	int num=0,i;
+	for(i=0;i<8;i++){
+		if(first[i][0]=='D') num = num+1;
+	}
+	return num;
 }
